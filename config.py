@@ -17,7 +17,7 @@ UPLOADS_DIR = os.path.join(BASE_DIR, "uploads")
 # ========================
 OLLAMA_BASE_URL = "http://localhost:11434"
 OLLAMA_MODEL = "llama3"
-LLM_TEMPERATURE = 0.1  # Hukuki analiz için düşük sıcaklık (deterministik)
+LLM_TEMPERATURE = 0.2  # Hukuki analiz için düşük sıcaklık (deterministik ama daha uretken)
 LLM_TOP_P = 0.9
 LLM_NUM_CTX = 4096  # Context window boyutu
 
@@ -48,7 +48,7 @@ CHUNK_SEPARATORS = [
 # ========================
 # 🔍 Retrieval Ayarları
 # ========================
-RETRIEVAL_TOP_K = 5  # En yakın 5 chunk getirilir
+RETRIEVAL_TOP_K = 15  # En yakın 15 chunk getirilir
 SIMILARITY_THRESHOLD = 0.3  # Minimum benzerlik eşiği
 
 # ========================

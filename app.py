@@ -354,7 +354,8 @@ else:
 
         with st.chat_message("assistant"):
             with st.spinner("🤖 Analiz yapılıyor..."):
-                response = ask_question(prompt, st.session_state.analysis_type)
+                # Serbest sorularda her zaman qa (Question Answering) modunu kullan
+                response = ask_question(prompt, "qa")
             st.markdown(response)
 
         st.session_state.messages.append({"role": "assistant", "content": response})

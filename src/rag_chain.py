@@ -14,6 +14,7 @@ from prompts.risk_analysis import (
     SUMMARY_PROMPT,
     CLAUSE_EXPLAIN_PROMPT,
     COMPARISON_PROMPT,
+    QA_PROMPT,
 )
 from config import RETRIEVAL_TOP_K
 
@@ -33,7 +34,7 @@ def create_rag_chain(analysis_type: str = "risk"):
     Belirtilen analiz türüne göre RAG zinciri oluşturur.
 
     Args:
-        analysis_type: "risk", "summary", "explain", "compare"
+        analysis_type: "risk", "summary", "explain", "compare", "qa"
 
     Returns:
         Runnable chain
@@ -43,6 +44,7 @@ def create_rag_chain(analysis_type: str = "risk"):
         "summary": SUMMARY_PROMPT,
         "explain": CLAUSE_EXPLAIN_PROMPT,
         "compare": COMPARISON_PROMPT,
+        "qa": QA_PROMPT,
     }
 
     template = prompt_map.get(analysis_type, RISK_ANALYSIS_PROMPT)

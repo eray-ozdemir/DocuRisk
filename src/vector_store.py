@@ -103,9 +103,16 @@ def get_retriever(top_k: int = RETRIEVAL_TOP_K):
     vector_store = get_vector_store()
     if vector_store is None:
         return None
+        
+    # MMR (Maximal Marginal Relevance) kullanarak çeşitli ve farklı sonuçların gelmesini sağlıyoruz.
+    # fetch_k=50 ile önce 50 sonuç bulur, sonra bunların içinden en çeşitli k=15 tanesini seçer.
     return vector_store.as_retriever(
-        search_type="similarity",
-        search_kwargs={"k": top_k},
+        search_type="mmr",
+        search_kwargs={
+            "k": top_k,
+            "fetch_k": 50,
+            "lambda_mult": 0.5  # Çeşitlilik (diversity) çarpanı
+        },
     )
 
 

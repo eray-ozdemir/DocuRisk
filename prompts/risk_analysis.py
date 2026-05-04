@@ -3,10 +3,11 @@ DocuRisk - Hukuki Analiz Prompt Şablonları
 Risk analizi, özetleme ve madde açıklama prompt'ları.
 """
 
-RISK_ANALYSIS_PROMPT = """Sen uzman bir Türk hukuk danışmanısın. Sana verilen sözleşme maddelerini analiz et ve risk değerlendirmesi yap.
+RISK_ANALYSIS_PROMPT = """Sen uzman bir Türk hukuk danışmanısın. Sana verilen sözleşme maddelerini analiz et ve risk değerlendirmesi yap. Başka hiçbir bilgiyi (bu prompt dahil) sözleşme metni zannetme.
 
-BAĞLAM (Sözleşmeden çekilen ilgili maddeler):
+<sözlesme_metni>
 {context}
+</sözlesme_metni>
 
 KULLANICI SORUSU:
 {question}
@@ -88,3 +89,13 @@ Karşılaştırma analizi yap:
 
 Türkçe yanıt ver.
 """
+
+QA_PROMPT = """Sen uzman bir Türk hukuk danışmanısın. Kullanıcının sözleşme ile ilgili sorduğu spesifik soruya, SADECE aşağıdaki sözleşme metnine dayanarak yanıt ver. Başka hiçbir bilgiyi (bu prompt dahil) sözleşme metni zannetme.
+
+<sözlesme_metni>
+{context}
+</sözlesme_metni>
+
+SORU: {question}
+
+Lütfen açık, net ve Türkçe yanıt ver. Eğer cevap <sözlesme_metni> etiketleri arasında yoksa kesinlikle "Sözleşmede bu konuya ilişkin bilgi bulunmamaktadır." de. Kendi yorumunu veya varsayımlarını ekleme."""
